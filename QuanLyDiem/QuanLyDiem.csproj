@@ -32,8 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\IT_Quiz\IT_Quiz\bin\Debug\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,16 +54,68 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="AdminFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AdminFrm.Designer.cs">
+      <DependentUpon>AdminFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangNhap.Designer.cs">
+      <DependentUpon>DangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExtentionMethod.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="TeacherFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherFrm.Designer.cs">
+      <DependentUpon>TeacherFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UC1\UC_QuanLyGiaoVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UC1\UC_QuanLyGiaoVien.Designer.cs">
+      <DependentUpon>UC_QuanLyGiaoVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UC1\UC_QuanLyHoSoHocSinh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UC1\UC_QuanLyHoSoHocSinh.Designer.cs">
+      <DependentUpon>UC_QuanLyHoSoHocSinh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UC1\UC_QuanLyLop.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UC1\UC_QuanLyLop.Designer.cs">
+      <DependentUpon>UC_QuanLyLop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UC1\UC_QuanLyMonHoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UC1\UC_QuanLyMonHoc.Designer.cs">
+      <DependentUpon>UC_QuanLyMonHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UC2\UC_QuanLyDiem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UC2\UC_QuanLyDiem.Designer.cs">
+      <DependentUpon>UC_QuanLyDiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UC3\UC_PhanCongGiangDay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UC3\UC_PhanCongGiangDay.Designer.cs">
+      <DependentUpon>UC_PhanCongGiangDay.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminFrm.resx">
+      <DependentUpon>AdminFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DangNhap.resx">
+      <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -64,7 +125,30 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TeacherFrm.resx">
+      <DependentUpon>TeacherFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UC1\UC_QuanLyGiaoVien.resx">
+      <DependentUpon>UC_QuanLyGiaoVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UC1\UC_QuanLyHoSoHocSinh.resx">
+      <DependentUpon>UC_QuanLyHoSoHocSinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UC1\UC_QuanLyLop.resx">
+      <DependentUpon>UC_QuanLyLop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UC1\UC_QuanLyMonHoc.resx">
+      <DependentUpon>UC_QuanLyMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UC2\UC_QuanLyDiem.resx">
+      <DependentUpon>UC_QuanLyDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UC3\UC_PhanCongGiangDay.resx">
+      <DependentUpon>UC_PhanCongGiangDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -77,6 +161,77 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Minus Math _48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Graduation Cap_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUS\BUS.csproj">
+      <Project>{5e3ae465-6390-4931-a7f6-eb20f8e61fdd}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataProvider\DAL.csproj">
+      <Project>{187cd3c9-b2b6-4903-8d05-2494b9b8873c}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{ce0d6e7c-c4ec-42f3-b214-78b47fb04a05}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Form\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menu_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menu_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Book_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Classroom_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\School Director_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Student Male_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add List_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete Document_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit Property_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search Property_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bulleted List_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Report Card_48px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
