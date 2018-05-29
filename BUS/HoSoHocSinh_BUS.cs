@@ -70,6 +70,12 @@ namespace BUS
             return DataProvider.Instance.ExcuteQuery(query, new object[] { malop });
         }
 
+        public DataTable layDanhSachHocSinh(string maGV)
+        {
+            string query = @"exec db_LayDanhSachHocSinh @malop";
+            return DataProvider.Instance.ExcuteQuery(query, new object[] { maGV });
+        }
+
         public bool KiemTraTonTai(string MaHS)
         {
             string query = @"  select [MaHocSinh]

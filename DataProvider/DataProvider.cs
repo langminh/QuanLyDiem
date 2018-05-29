@@ -89,8 +89,11 @@ namespace DAL
                         }
                     }
                 }
-
-                result = command.ExecuteNonQuery();
+                try
+                {
+                    result = command.ExecuteNonQuery();
+                }
+                catch { }
             }
             return result;
         }

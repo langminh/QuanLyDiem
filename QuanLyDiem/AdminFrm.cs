@@ -1,5 +1,6 @@
 ﻿using QuanLyDiem.UC.UC1;
 using QuanLyDiem.UC.UC3;
+using QuanLyDiem.UC.UC4;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,16 +11,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using DTO;
+
 namespace QuanLyDiem
 {
     public partial class AdminFrm : Form
     {
-        public AdminFrm()
+        private CanBoGiaoVien giaoVien { get; set; }
+        public AdminFrm(CanBoGiaoVien giaoVien)
         {
             InitializeComponent();
             btnQuanLyMonHoc.selected = true;
             mainPanel.Controls.Clear();
             mainPanel.Controls.Add(new UC_QuanLyMonHoc());
+            this.giaoVien = giaoVien;
         }
 
         private void bunifuImageButton1_Click(object sender, EventArgs e)
@@ -58,32 +63,55 @@ namespace QuanLyDiem
 
         private void btnQuanLyMonHoc_Click(object sender, EventArgs e)
         {
+            UC_QuanLyMonHoc quanLyMonHoc = new UC_QuanLyMonHoc();
             mainPanel.Controls.Clear();
-            mainPanel.Controls.Add(new UC_QuanLyMonHoc());
+            quanLyMonHoc.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(quanLyMonHoc);
         }
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
+            UC_QuanLyLop quanLyLop = new UC_QuanLyLop();
             mainPanel.Controls.Clear();
-            mainPanel.Controls.Add(new UC_QuanLyLop());
+            quanLyLop.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(quanLyLop);
         }
 
         private void bunifuFlatButton3_Click(object sender, EventArgs e)
         {
+            UC_QuanLyHoSoHocSinh quanLyHoSoHocSinh = new UC_QuanLyHoSoHocSinh();
             mainPanel.Controls.Clear();
-            mainPanel.Controls.Add(new UC_QuanLyHoSoHocSinh());
+            quanLyHoSoHocSinh.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(quanLyHoSoHocSinh);
         }
 
         private void bunifuFlatButton4_Click(object sender, EventArgs e)
         {
+            UC_QuanLyGiaoVien quanLyGiaoVien = new UC_QuanLyGiaoVien();
             mainPanel.Controls.Clear();
-            mainPanel.Controls.Add(new UC_QuanLyGiaoVien());
+            quanLyGiaoVien.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(quanLyGiaoVien);
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
+            UC_PhanCongGiangDay phanCongGiangDay = new UC_PhanCongGiangDay();
             mainPanel.Controls.Clear();
-            mainPanel.Controls.Add(new UC_PhanCongGiangDay());
+            phanCongGiangDay.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(phanCongGiangDay);
+        }
+
+        private void bunifuFlatButton5_Click(object sender, EventArgs e)
+        {
+            UC_BaoCao baoCao = new UC_BaoCao(giaoVien.MaCanBoGiaoVien);
+            mainPanel.Controls.Clear();
+            baoCao.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(baoCao);
+        }
+
+        private void AdminFrm_Load(object sender, EventArgs e)
+        {
+            lbName.Text = giaoVien.HoTen + " Admin";
         }
     }
 }

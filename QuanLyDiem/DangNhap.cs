@@ -48,7 +48,15 @@ namespace QuanLyDiem
             }
             else
             {
-                MessageBox.Show("Dang Nhap thanh cong.", "Dang nhap thanh cong", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if(giaoVien.LoaiTaiKhoan == 1)
+                {
+                    this.Hide();
+                    new AdminFrm(giaoVien).Show();
+                }else if(giaoVien.LoaiTaiKhoan == 2)
+                {
+                    this.Hide();
+                    new TeacherFrm(giaoVien).Show();
+                }
             }
         }
     }

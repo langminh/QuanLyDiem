@@ -20,6 +20,17 @@ namespace BUS
             set { instance = value; }
         }
 
+        public string LayTenGiaoVienChuNhiem(string maLop)
+        {
+            string query = @"select [dbo].fn_GetNameTeacher( @malop )";
+            DataTable dt = DataProvider.Instance.ExcuteQuery(query, new object[] { maLop });
+            if(dt.Rows.Count > 0)
+            {
+                return dt.Rows[0][0].ToString();
+            }
+            return string.Empty;
+        }
+
         public DataTable LayDanhSachGiaoVien()
         {
             string query = @"SELECT [MaCanBoGiaoVien]
@@ -30,6 +41,12 @@ namespace BUS
       ,[LoaiTaiKhoan]
   FROM [QuanLy_Diem].[dbo].[CanBoGiaoVien]";
             return DataProvider.Instance.ExcuteQuery(query);
+        }
+
+        public DataTable LayDanhSachGiaoVienReport(string maLop)
+        {
+            string query = @"exec sb_GetListTeacherByClassID @malop";
+            return DataProvider.Instance.ExcuteQuery(query, new object[] { maLop });
         }
 
         public DataTable LayDanhSachGiaoVien(string maGV)
@@ -81,6 +98,7 @@ namespace BUS
       ,[DiaChi]
       ,[SoDienThoai]
       ,[TaiKhoan]
+      ,[MatKhau]
       ,[LoaiTaiKhoan] from CanBoGiaoVien where MaCanBoGiaoVien = @magv";
             DataTable dt = DataProvider.Instance.ExcuteQuery(query, new object[] { MaGiaoVien });
             CanBoGiaoVien giaoVien = new CanBoGiaoVien();
@@ -89,7 +107,8 @@ namespace BUS
             giaoVien.DiaChi = dt.Rows[0][2].ToString();
             giaoVien.SoDienThoai = dt.Rows[0][3].ToString();
             giaoVien.TaiKhoan = dt.Rows[0][4].ToString();
-            giaoVien.LoaiTaiKhoan = int.Parse(dt.Rows[0][5].ToString());
+            giaoVien.MatKhau = dt.Rows[0][5].ToString();
+            giaoVien.LoaiTaiKhoan = int.Parse(dt.Rows[0][6].ToString());
             return giaoVien;
         }
 

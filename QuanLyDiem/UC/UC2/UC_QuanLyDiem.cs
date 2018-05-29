@@ -49,11 +49,11 @@ namespace QuanLyDiem.UC.UC2
             string maLop = cbxLop.SelectedValue.ToString();
             int maMon = int.Parse(cbxMonHoc.SelectedValue.ToString());
 
-            dtvDiem.DataSource = Diem_BUS.Instance.LayDanhSachDiem(maLop, maMon);
-            dtvDiem.Rows[vt].Selected = true;
-            dtvDiem.Columns[5].Visible = false;
-            dtvDiem.Columns[6].Visible = false;
-            dtvDiem.ChinhTieuDeDataGridView(new string[] { "Mã học sinh", "Tên học sinh", "Tên môn", "Điểm TB kỳ 1", "Điểm TB kỳ 2", "", ""});
+            dataGridView1.DataSource = Diem_BUS.Instance.LayDanhSachDiem(maLop, maMon);
+            dataGridView1.Rows[vt].Selected = true;
+            dataGridView1.Columns[5].Visible = false;
+            dataGridView1.Columns[6].Visible = false;
+            dataGridView1.ChinhTieuDeDataGridView(new string[] { "Mã học sinh", "Tên học sinh", "Tên môn", "Điểm TB kỳ 1", "Điểm TB kỳ 2", "", ""});
         }
 
         private void cbxLop_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,10 +75,10 @@ namespace QuanLyDiem.UC.UC2
 
         private void dtvDiem_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(dtvDiem.SelectedRows.Count > 0)
+            if(dataGridView1.SelectedRows.Count > 0)
             {
-                vt = dtvDiem.SelectedRows[0].Index;
-                DataGridViewRow row = dtvDiem.SelectedRows[0];
+                vt = dataGridView1.SelectedRows[0].Index;
+                DataGridViewRow row = dataGridView1.SelectedRows[0];
                 txtTBKy1.Text = row.Cells[3].Value.ToString();
                 txtTBKy2.Text = row.Cells[4].Value.ToString();
             }
@@ -86,9 +86,9 @@ namespace QuanLyDiem.UC.UC2
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-            if (dtvDiem.SelectedRows.Count > 0)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
-                DataGridViewRow row = dtvDiem.SelectedRows[0];
+                DataGridViewRow row = dataGridView1.SelectedRows[0];
                 string maLop = row.Cells[5].Value.ToString();
                 string maMon = row.Cells[6].Value.ToString();
                 string maHS = row.Cells[0].Value.ToString();

@@ -26,6 +26,12 @@ namespace BUS
             return DataProvider.Instance.ExcuteQuery(query);
         }
 
+        public DataTable LayDanhSachPhanCongGiangDay(string tim)
+        {
+            string query = @"select * from fn_GetSchedulesTeachFillter( @tim )";
+            return DataProvider.Instance.ExcuteQuery(query, new object[] { tim});
+        }
+
         public DataTable LayDanhSachPhanCongTheoLop(string maLop)
         {
             string query = @"select * from fn_GetSchedulesTeachByClassID( @malop )";

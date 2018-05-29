@@ -114,7 +114,37 @@ namespace QuanLyDiem.UC.UC3
 
         private void btnTim_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(txtTim.Text))
+            {
+                dataGridView2.DataSource = PhanCongGiangDay_BUS.Instance.LayDanhSachPhanCongGiangDay(txtTim.Text);
+                dataGridView2.Columns[5].Visible = false;
+                dataGridView2.Columns[6].Visible = false;
+                dataGridView2.ChinhTieuDeDataGridView(new string[] { "Mã lớp", "Tên lớp", "Giáo viên", "Tên môn", "Ngày phân công", "", "" });
+            }
+            else
+            {
+                LoadData2();
+            }
+        }
 
+        void LoadData2()
+        {
+            dataGridView2.DataSource = PhanCongGiangDay_BUS.Instance.LayDanhSachPhanCongGiangDay();
+            dataGridView2.Columns[5].Visible = false;
+            dataGridView2.Columns[6].Visible = false;
+            dataGridView2.ChinhTieuDeDataGridView(new string[] { "Mã lớp", "Tên lớp", "Giáo viên", "Tên môn", "Ngày phân công", "", "" });
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabControl1.TabPages["tabPage1"])//your specific tabname
+            {
+                LoadData(0);
+            }
+            else
+            {
+                LoadData2();
+            }
         }
     }
 }
